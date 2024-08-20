@@ -5,6 +5,7 @@ const renderUI = () => {
 
   const header = document.createElement("div");
   header.classList.add("header");
+  header.innerHTML = '<i class="fas fa-circle-check"></i>';
   container.appendChild(header);
 
   const headerPara = document.createElement("h1");
