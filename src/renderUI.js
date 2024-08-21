@@ -20,6 +20,28 @@ const renderUI = () => {
   sidebarPara.textContent = "Projects";
   sidebar.appendChild(sidebarPara);
 
+  const projectContainer = document.createElement("div");
+  projectContainer.classList.add("project-container");
+  sidebar.appendChild(projectContainer);
+
+  const prjctModal = document.createElement("dialog");
+  prjctModal.setAttribute("id", "project-modal");
+  sidebar.appendChild(prjctModal);
+
+  const prjModalPara = document.createElement("p");
+  prjctModal.appendChild(prjModalPara);
+
+  const prjModalLbl = document.createElement("label");
+  prjModalLbl.setAttribute("for", "name");
+  prjModalPara.appendChild(prjModalLbl);
+
+  const prjModalInput = document.createElement("input");
+  prjModalInput.setAttribute("type", "text");
+  prjModalInput.setAttribute("id", "project-name");
+  prjModalInput.setAttribute("placeholder", "Project Name...");
+  prjModalInput.required = true;
+  prjModalPara.appendChild(prjModalInput);
+
   const addPrjctBtn = document.createElement("button");
   addPrjctBtn.setAttribute("id", "add-project");
   addPrjctBtn.innerHTML = '<i class="fas fa-plus"></i> Add Project';
