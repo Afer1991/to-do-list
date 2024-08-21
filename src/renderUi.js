@@ -16,6 +16,15 @@ const renderUI = () => {
   sidebar.classList.add("sidebar");
   container.appendChild(sidebar);
 
+  const sidebarPara = document.createElement("h1");
+  sidebarPara.textContent = "Projects";
+  sidebar.appendChild(sidebarPara);
+
+  const addPrjctBtn = document.createElement("button");
+  addPrjctBtn.setAttribute("id", "add-project");
+  addPrjctBtn.innerHTML = '<i class="fas fa-plus"></i> Add Project';
+  sidebar.appendChild(addPrjctBtn);
+
   const content = document.createElement("div");
   content.classList.add("content");
   container.appendChild(content);
