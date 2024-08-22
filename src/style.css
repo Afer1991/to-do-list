@@ -50,6 +50,33 @@ h1 {
   padding: 24px;
 }
 
+#project-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px solid #000;
+}
+
+input {
+  padding: 4px;
+  font-size: 1rem;
+}
+
+.btn-container {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-container button {
+  padding: 0 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 #add-project {
   margin: 0 24px;
   padding: 4px 8px;
