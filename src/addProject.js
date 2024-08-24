@@ -3,3 +3,5 @@ class Project {
     this.name = name;
   }
 }
+
+export default Project;

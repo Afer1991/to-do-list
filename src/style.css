@@ -72,9 +72,20 @@ input {
 }
 
 .btn-container button {
-  padding: 0 16px;
+  padding: 6px 16px;
   border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bolder;
   cursor: pointer;
+  border: 1px solid #ddd;
+}
+
+#add-new-project {
+  background: #a7f3d0;
+}
+
+#cncl-new-project {
+  background: #fda4af;
 }
 
 #add-project {

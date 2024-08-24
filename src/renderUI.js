@@ -28,8 +28,12 @@ const renderUI = () => {
   prjctModal.setAttribute("id", "project-modal");
   sidebar.appendChild(prjctModal);
 
+  const prjctForm = document.createElement("form");
+  prjctForm.setAttribute("id", "project-form");
+  prjctModal.appendChild(prjctForm);
+
   const prjModalPara = document.createElement("p");
-  prjctModal.appendChild(prjModalPara);
+  prjctForm.appendChild(prjModalPara);
 
   const prjModalLbl = document.createElement("label");
   prjModalLbl.setAttribute("for", "project-name");
@@ -44,15 +48,17 @@ const renderUI = () => {
 
   const btnContainer = document.createElement("div");
   btnContainer.classList.add("btn-container");
-  prjctModal.appendChild(btnContainer);
+  prjctForm.appendChild(btnContainer);
 
   const addNewPrjctBtn = document.createElement("button");
   addNewPrjctBtn.setAttribute("id", "add-new-project");
+  addNewPrjctBtn.setAttribute("type", "submit");
   addNewPrjctBtn.innerText = "Add";
   btnContainer.appendChild(addNewPrjctBtn);
 
   const cnclNewPrjctBtn = document.createElement("button");
   cnclNewPrjctBtn.setAttribute("id", "cncl-new-project");
+  cnclNewPrjctBtn.setAttribute("type", "reset");
   cnclNewPrjctBtn.innerText = "Cancel";
   btnContainer.appendChild(cnclNewPrjctBtn);
 

@@ -12,9 +12,15 @@ dom.watch();
 
 renderUI();
 
+const projectList = [];
 const addPrjctBtn = document.getElementById("add-project");
 const prjctModal = document.getElementById("project-modal");
+const prjctForm = document.getElementById("project-form");
 
 addPrjctBtn.addEventListener("click", () => {
   prjctModal.showModal();
+});
+
+prjctForm.addEventListener("reset", () => {
+  prjctModal.close();
 });
