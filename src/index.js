@@ -5,7 +5,7 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons/faCircleCheck";
 import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
 import { faList } from "@fortawesome/free-solid-svg-icons/faList";
 import { faXmark } from "@fortawesome/free-solid-svg-icons/faXmark";
-import { Project, addProject } from './addProject.js';
+import addProject from './addProject.js';
 
 
 library.add(faCircleCheck);

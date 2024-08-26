@@ -53,13 +53,13 @@ const renderUI = () => {
   const addNewPrjctBtn = document.createElement("button");
   addNewPrjctBtn.setAttribute("id", "add-new-project");
   addNewPrjctBtn.setAttribute("type", "submit");
-  addNewPrjctBtn.innerText = "Add";
+  addNewPrjctBtn.textContent = "Add";
   btnContainer.appendChild(addNewPrjctBtn);
 
   const cnclNewPrjctBtn = document.createElement("button");
   cnclNewPrjctBtn.setAttribute("id", "cncl-new-project");
   cnclNewPrjctBtn.setAttribute("type", "reset");
-  cnclNewPrjctBtn.innerText = "Cancel";
+  cnclNewPrjctBtn.textContent = "Cancel";
   btnContainer.appendChild(cnclNewPrjctBtn);
 
   const addPrjctBtn = document.createElement("button");

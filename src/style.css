@@ -50,7 +50,29 @@ h1 {
   padding: 24px;
 }
 
-#project-modal {
+.project-container {
+  margin: 0 24px;
+}
+
+.project-div {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.project-div:hover {
+  cursor: pointer;
+  background-color: #00000028;
+}
+
+.project-div div {
+  display: flex;
+  gap: 8px;
+  font-family: 'Raleway';
+}
+
+#project-modal, #to-do-modal {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -60,7 +82,7 @@ h1 {
   border: 2px solid #000;
 }
 
-input {
+#project-modal input {
   padding: 4px;
   font-size: 1rem;
 }
@@ -71,7 +93,7 @@ input {
   justify-content: space-between;
 }
 
-.btn-container button {
+.btn-container button, .content .btn-container button {
   padding: 6px 16px;
   border-radius: 8px;
   font-size: 1rem;
@@ -80,16 +102,16 @@ input {
   border: 1px solid #ddd;
 }
 
-#add-new-project {
+#add-new-project, #add-to-do {
   background: #a7f3d0;
 }
 
-#cncl-new-project {
+#cncl-new-project, #cnl-to-do {
   background: #fda4af;
 }
 
 #add-project {
-  margin: 0 24px;
+  margin: 12px 24px;
   padding: 4px 8px;
   font-family: 'Raleway';
   border: none;
@@ -101,6 +123,40 @@ input {
 #add-project:hover {
   cursor: pointer;
   background-color: #00000028;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content h1 {
+  color: #000;
+  padding: 24px 0;
+}
+
+#to-do-form p {
+  display: flex;
+  flex-direction: column;
+}
+
+.content svg {
+  color: #000;
+}
+
+.content button {
+  padding: 4px 8px;
+  font-family: 'Raleway';
+  border: none;
+  border-radius: 5px;
+  background: #FFF;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.content button:hover {
+  background: #DDD;
 }
 
 .footer {
