@@ -1,6 +1,7 @@
 class Project {
   constructor(name) {
     this.name = name;
+    this.todos = [];
   }
 }
 
@@ -16,6 +17,7 @@ class Todo {
 const addProject = (arr) => {
   const projectContainer = document.querySelector(".project-container");
   const projectName = document.getElementById("project-name");
+
   const newProject = new Project(projectName.value);
 
   const repeatName = arr.some(el => el.name === newProject.name);
@@ -30,14 +32,14 @@ const addProject = (arr) => {
     projectDiv.innerHTML = `<div><i class="fas fa-list"></i><span>${newProject.name}</span></div><i class="fas fa-xmark"></i>`;
 
     projectDiv.addEventListener("click", () => {
-      renderProject(newProject)
+      renderProject(newProject, arr);
     });
 
     arr.push(newProject);
   };
 };
 
-const renderProject = (project) => {
+const renderProject = (project, arr) => {
   const content = document.querySelector(".content");
 
   while (content.hasChildNodes()) {
@@ -157,13 +159,33 @@ const renderProject = (project) => {
     toDoModal.showModal();
   });
 
+  toDoForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    addToDo(project);
+    toDoForm.reset();
+    toDoModal.close();
+  });
+
   toDoForm.addEventListener("reset", () => {
     toDoModal.close();
   });
 };
 
-const addToDo = () => {
+const addToDo = (project) => {
+  const toDoTitle = document.getElementById("to-do-title");
+  const toDoDescription = document.getElementById("to-do-description");
+  const toDoDueDate = document.getElementById("to-do-due-date");
+  const toDoPriority = document.getElementById("to-do-priority");
+
+  const newToDo = new Todo(toDoTitle.value, toDoDescription.value, toDoDueDate.value, toDoPriority.value);
+
+  const repeatToDo = project.todos.some(el => el.title === newToDo.title);
   
+  if (repeatToDo) {
+    alert("To-Dos must be different");
+  } else {
+    project.todos.push(newToDo); 
+  };
 };
 
 export default addProject;
