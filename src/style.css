@@ -145,7 +145,37 @@ h1 {
   color: #000;
 }
 
-.content button {
+.to-do-list {
+  width: 40%;
+}
+
+.to-do-list > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.to-do-list > div > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.to-do-list button {
+  padding: 4px 8px;
+  font-family: 'Raleway';
+  border: 2px solid #000;
+  border-radius: 5px;
+  background: #FFF;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.to-do-list button:hover {
+  border: 2px solid transparent;
+  background: #DDD;
+}
+
+.add-task {
   padding: 4px 8px;
   font-family: 'Raleway';
   border: none;
@@ -155,7 +185,7 @@ h1 {
   cursor: pointer;
 }
 
-.content button:hover {
+.add-task:hover {
   background: #DDD;
 }
 

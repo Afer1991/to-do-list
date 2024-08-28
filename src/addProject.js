@@ -32,14 +32,16 @@ const addProject = (arr) => {
     projectDiv.innerHTML = `<div><i class="fas fa-list"></i><span>${newProject.name}</span></div><i class="fas fa-xmark"></i>`;
 
     projectDiv.addEventListener("click", () => {
-      renderProject(newProject, arr);
+      renderProject(newProject);
+      renderToDoList(newProject);
     });
 
     arr.push(newProject);
   };
+  console.log(arr);
 };
 
-const renderProject = (project, arr) => {
+const renderProject = (project) => {
   const content = document.querySelector(".content");
 
   while (content.hasChildNodes()) {
@@ -152,6 +154,7 @@ const renderProject = (project, arr) => {
   btnContainer.appendChild(cnlToDoBtn);
 
   const btn = document.createElement("button");
+  btn.classList.add("add-task");
   btn.innerHTML = '<i class="fas fa-plus"></i> Add Task';
   content.appendChild(btn);
 
@@ -162,6 +165,7 @@ const renderProject = (project, arr) => {
   toDoForm.addEventListener("submit", (e) => {
     e.preventDefault();
     addToDo(project);
+    renderToDoList(project);
     toDoForm.reset();
     toDoModal.close();
   });
@@ -188,4 +192,22 @@ const addToDo = (project) => {
   };
 };
 
-export default addProject;
+const renderToDoList = (project) => {
+  const toDoList = document.querySelector(".to-do-list");
+
+  while (toDoList.hasChildNodes()) {
+    toDoList.removeChild(toDoList.firstChild);
+  };
+  
+  for (let i = 0; i < project.todos.length; i++) {
+    const toDoContainer = document.createElement("div");
+    toDoList.appendChild(toDoContainer);
+    
+    toDoContainer.innerHTML = `<div><i class="far fa-circle"></i><span>${project.todos[i].title}</span></div>
+                               <div><button>Details</button><span>${project.todos[i].dueDate}</span><i class="fas fa-xmark"></i></div>`;
+
+
+  };
+};
+
+export { addProject, renderProject, renderToDoList };
