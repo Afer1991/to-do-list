@@ -31,6 +31,12 @@ const addProject = (arr) => {
 
     projectDiv.innerHTML = `<div><i class="fas fa-list"></i><span>${newProject.name}</span></div><i class="fas fa-xmark"></i>`;
 
+    const removeProject = document.querySelector(".svg.svg-inline--fa.fa-xmark");
+
+    removeProject.addEventListener("click", () => {
+      deleteProject(removeProject, arr);
+    });
+
     projectDiv.addEventListener("click", () => {
       renderProject(newProject);
       renderToDoList(newProject);
@@ -209,6 +215,34 @@ const renderToDoList = (project) => {
 
 
   };
+};
+
+const deleteProject = (el, arr) => {
+  const parentID = el.parentElement.dataset.id;
+  arr.splice(parentID, 1);
+
+  const projectContainer = document.querySelector(".project-container");
+
+  while (projectContainer.hasChildNodes()) {
+    projectContainer.removeChild(projectContainer.firstChild);
+  };
+  
+  for (let i = 0; i < arr.length; i++) {
+    const projectDiv = document.createElement("div");
+    projectDiv.classList.add("project-div");
+    projectContainer.appendChild(projectDiv);
+
+    projectDiv.innerHTML = `<div><i class="fas fa-list" onclick="deleteProject(this, projectList)"></i><span>${arr[i].name}</span></div><i class="fas fa-xmark"></i>`;
+
+    projectDiv.addEventListener("click", () => {
+      renderProject(arr[i].name);
+      renderToDoList(arr[i].name);
+    });
+
+    projectDiv.dataset.id = i;
+  }
+
+  
 };
 
 export { addProject, renderProject, renderToDoList };
