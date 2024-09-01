@@ -37,6 +37,7 @@ const addProject = (arr) => {
     });
 
     arr.push(newProject);
+    projectDiv.dataset.id = arr.length - 1;
   };
   console.log(arr);
 };

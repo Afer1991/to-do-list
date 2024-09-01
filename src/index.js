@@ -6,6 +6,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
 import { faList } from "@fortawesome/free-solid-svg-icons/faList";
 import { faXmark } from "@fortawesome/free-solid-svg-icons/faXmark";
 import { faCircle } from "@fortawesome/free-regular-svg-icons/faCircle";
+import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 import { addProject, renderProject, renderToDoList } from './addProject.js';
 
 
@@ -14,6 +15,7 @@ library.add(faPlus);
 library.add(faList);
 library.add(faXmark);
 library.add(faCircle);
+library.add(faGithub);
 dom.watch();
 
 renderUI();
@@ -39,6 +41,7 @@ const prjctForm = document.getElementById("project-form");
 
 const projectDiv = document.createElement("div");
 projectDiv.classList.add("project-div");
+projectDiv.dataset.id = 0;
 projectContainer.appendChild(projectDiv);
 
 projectDiv.innerHTML = `<div><i class="fas fa-list"></i><span>${defaultProject.name}</span></div><i class="fas fa-xmark"></i>`;

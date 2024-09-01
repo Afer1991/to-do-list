@@ -74,6 +74,12 @@ const renderUI = () => {
   const footer = document.createElement("div");
   footer.classList.add("footer");
   container.appendChild(footer);
+
+  const ghLink = document.createElement("a");
+  ghLink.setAttribute("href", "https://github.com/Afer1991");
+  ghLink.setAttribute("target", "_blank");
+  ghLink.innerHTML = '<i class="fa-brands fa-github"></i>';
+  footer.appendChild(ghLink);
 };
 
 export default renderUI;

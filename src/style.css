@@ -28,6 +28,10 @@ body {
   gap: 8px;
 }
 
+svg.svg-inline--fa.fa-circle-check, svg.svg-inline--fa.fa-github {
+  height: 2rem;
+}
+
 h1, svg {
   color: #FFFFFF;
 }
@@ -192,4 +196,23 @@ h1 {
 .footer {
   grid-column: 1 / 3;
   background: #353535;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+svg.svg-inline--fa.fa-github:hover {
+  animation: rotate 300ms linear;
+}
+
+@keyframes rotate{
+  0%{
+      transform: rotate(0deg);
+  }
+  50%{
+      transform: rotate(180deg);
+  }
+  100%{
+      transform: rotate(360deg);
+  }
 }
