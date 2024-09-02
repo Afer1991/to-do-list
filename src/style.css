@@ -76,6 +76,12 @@ h1 {
   font-family: 'Raleway';
 }
 
+.project-div button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
 #project-modal, #to-do-modal {
   position: absolute;
   top: 50%;

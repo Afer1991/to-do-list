@@ -223,12 +223,14 @@ const deleteProject = (el, arr) => {
 
   const content = document.querySelector(".content");
 
-  if (content.firstChild.textContent === arr[parentID].name) {
-    while (content.hasChildNodes()) {
-      content.removeChild(content.firstChild);
-    };
-  }
-
+  if (content.hasChildNodes()) {
+    if (content.firstChild.textContent === arr[parentID].name) {
+      while (content.hasChildNodes()) {
+        content.removeChild(content.firstChild);
+      };
+    };  
+  };
+  
   arr.splice(parentID, 1);
 
   const projectContainer = document.querySelector(".project-container");
