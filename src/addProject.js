@@ -220,6 +220,15 @@ const renderToDoList = (project) => {
 
 const deleteProject = (el, arr) => {
   const parentID = el.parentElement.dataset.id;
+
+  const content = document.querySelector(".content");
+
+  if (content.firstChild.textContent === arr[parentID].name) {
+    while (content.hasChildNodes()) {
+      content.removeChild(content.firstChild);
+    };
+  }
+
   arr.splice(parentID, 1);
 
   const projectContainer = document.querySelector(".project-container");
