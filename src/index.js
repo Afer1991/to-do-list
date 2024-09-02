@@ -7,7 +7,7 @@ import { faList } from "@fortawesome/free-solid-svg-icons/faList";
 import { faXmark } from "@fortawesome/free-solid-svg-icons/faXmark";
 import { faCircle } from "@fortawesome/free-regular-svg-icons/faCircle";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
-import { addProject, renderProject, renderToDoList } from './addProject.js';
+import { addProject, renderProject, renderToDoList, deleteProject } from './addProject.js';
 
 
 library.add(faCircleCheck);
@@ -44,7 +44,14 @@ projectDiv.classList.add("project-div");
 projectDiv.dataset.id = 0;
 projectContainer.appendChild(projectDiv);
 
-projectDiv.innerHTML = `<div><i class="fas fa-list"></i><span>${defaultProject.name}</span></div><i class="fas fa-xmark"></i>`;
+projectDiv.innerHTML = `<div><i class="fas fa-list"></i><span>${defaultProject.name}</span></div><button id="remove-project-0"><i class="fas fa-xmark"></i></button>`;
+
+const removeProject = document.getElementById("remove-project-0");
+
+removeProject.addEventListener("click", (e) => {
+  e.stopPropagation();
+  deleteProject(removeProject, projectList);
+});
 
 projectDiv.addEventListener("click", () => {
   renderProject(defaultProject);

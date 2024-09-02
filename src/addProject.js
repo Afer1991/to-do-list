@@ -29,11 +29,12 @@ const addProject = (arr) => {
     projectDiv.classList.add("project-div");
     projectContainer.appendChild(projectDiv);
 
-    projectDiv.innerHTML = `<div><i class="fas fa-list"></i><span>${newProject.name}</span></div><i class="fas fa-xmark"></i>`;
+    projectDiv.innerHTML = `<div><i class="fas fa-list"></i><span>${newProject.name}</span></div><button id="remove-project-${arr.length}"><i class="fas fa-xmark"></i></button>`;
 
-    const removeProject = document.querySelector(".svg.svg-inline--fa.fa-xmark");
+    const removeProject = document.getElementById(`remove-project-${arr.length}`);
 
-    removeProject.addEventListener("click", () => {
+    removeProject.addEventListener("click", (e) => {
+      e.stopPropagation();
       deleteProject(removeProject, arr);
     });
 
@@ -232,17 +233,24 @@ const deleteProject = (el, arr) => {
     projectDiv.classList.add("project-div");
     projectContainer.appendChild(projectDiv);
 
-    projectDiv.innerHTML = `<div><i class="fas fa-list" onclick="deleteProject(this, projectList)"></i><span>${arr[i].name}</span></div><i class="fas fa-xmark"></i>`;
+    projectDiv.innerHTML = `<div><i class="fas fa-list"></i><span>${arr[i].name}</span></div><button id="remove-project-${i}"><i class="fas fa-xmark"></i></button>`;
+
+    const removeProject = document.getElementById(`remove-project-${i}`);
+
+    removeProject.addEventListener("click", (e) => {
+      e.stopPropagation();
+      deleteProject(removeProject, arr);
+    });
 
     projectDiv.addEventListener("click", () => {
-      renderProject(arr[i].name);
-      renderToDoList(arr[i].name);
+      renderProject(arr[i]);
+      renderToDoList(arr[i]);
     });
 
     projectDiv.dataset.id = i;
   }
 
-  
+  console.log(arr);
 };
 
-export { addProject, renderProject, renderToDoList };
+export { addProject, renderProject, renderToDoList, deleteProject };
