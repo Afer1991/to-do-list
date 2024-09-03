@@ -11,6 +11,7 @@ class Todo {
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
+    this.complete = false;
   }
 }
 
@@ -203,6 +204,11 @@ const addToDo = (project) => {
 const renderToDoList = (project) => {
   const toDoList = document.querySelector(".to-do-list");
 
+  const uncomplete = '<i class="far fa-circle"></i>';
+  const complete = '<i class="fas fa-circle-check"></i>';
+  const completeCls = 'class="complete"';
+  const uncompleteCls = "";
+
   while (toDoList.hasChildNodes()) {
     toDoList.removeChild(toDoList.firstChild);
   };
@@ -212,10 +218,20 @@ const renderToDoList = (project) => {
     toDoContainer.dataset.todo = i;
     toDoList.appendChild(toDoContainer);
     
-    toDoContainer.innerHTML = `<div><i class="far fa-circle"></i><span>${project.todos[i].title}</span></div>
-                               <div><button>Details</button><span>${project.todos[i].dueDate}</span><button class="remove-todo" id="remove-todo-${i}"><i class="fas fa-xmark"></i></button></div>`;
+    toDoContainer.innerHTML = `<div><button class="mark-complete" id="mark-complete-${i}">${project.todos[i].complete ? complete : uncomplete}</button><span ${project.todos[i].complete ? completeCls : uncompleteCls}>${project.todos[i].title}</span></div>
+                               <div><button class="details">Details</button><span>${project.todos[i].dueDate}</span><button class="remove-todo" id="remove-todo-${i}"><i class="fas fa-xmark"></i></button></div>`;
 
+    const markComplete = document.getElementById(`mark-complete-${i}`);                           
     const removeTodo = document.getElementById(`remove-todo-${i}`);
+
+    markComplete.addEventListener("click", () => {
+      if (project.todos[i].complete) {
+        project.todos[i].complete = false;
+      } else {
+        project.todos[i].complete = true;
+      }
+      renderToDoList(project);
+    });
 
     removeTodo.addEventListener("click", () => {
       deleteToDo(removeTodo, project);
@@ -273,26 +289,7 @@ const deleteToDo = (el, project) => {
 
   project.todos.splice(grandParentID, 1);
 
-  const toDoList = document.querySelector(".to-do-list");
-
-  while (toDoList.hasChildNodes()) {
-    toDoList.removeChild(toDoList.firstChild);
-  };
-
-  for (let i = 0; i < project.todos.length; i++) {
-    const toDoContainer = document.createElement("div");
-    toDoContainer.dataset.todo = i;
-    toDoList.appendChild(toDoContainer);
-    
-    toDoContainer.innerHTML = `<div><i class="far fa-circle"></i><span>${project.todos[i].title}</span></div>
-                               <div><button>Details</button><span>${project.todos[i].dueDate}</span><button class="remove-todo" id="remove-todo-${i}"><i class="fas fa-xmark"></i></button></div>`;
-
-    const removeTodo = document.getElementById(`remove-todo-${i}`);
-
-    removeTodo.addEventListener("click", () => {
-      deleteToDo(removeTodo, project);
-    });
-  }
+  renderToDoList(project);
 };
 
 export { addProject, renderProject, renderToDoList, deleteProject };

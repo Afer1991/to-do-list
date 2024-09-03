@@ -28,6 +28,7 @@ const defaultProject = {
       description: "Budget: $10,000",
       dueDate: "2024-08-31",
       priority: "2",
+      complete: false,
     }
   ],
 };

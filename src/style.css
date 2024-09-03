@@ -28,7 +28,7 @@ body {
   gap: 8px;
 }
 
-svg.svg-inline--fa.fa-circle-check, svg.svg-inline--fa.fa-github {
+.header svg, .footer svg {
   height: 2rem;
 }
 
@@ -162,6 +162,12 @@ h1 {
 .to-do-list > div {
   display: flex;
   justify-content: space-between;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.to-do-list > div:hover {
+  background-color: #00000028; 
 }
 
 .to-do-list > div > div {
@@ -170,7 +176,19 @@ h1 {
   gap: 8px;
 }
 
-.to-do-list button {
+.mark-complete, .remove-todo {
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  padding: 0;
+  cursor: pointer;
+}
+
+.complete {
+  text-decoration: line-through;
+}
+
+.details {
   padding: 4px 8px;
   font-family: 'Raleway';
   border: 2px solid #000;
@@ -180,21 +198,9 @@ h1 {
   cursor: pointer;
 }
 
-.to-do-list button:hover {
+.details:hover {
   border: 2px solid transparent;
   background: #DDD;
-}
-
-button.remove-todo {
-  border: none;
-  background: transparent;
-  font-size: 1rem;
-  padding: 0;
-}
-
-button.remove-todo:hover {
-  border: none;
-  background: transparent;
 }
 
 .add-task {
