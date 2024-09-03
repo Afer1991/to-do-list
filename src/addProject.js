@@ -209,18 +209,22 @@ const renderToDoList = (project) => {
   
   for (let i = 0; i < project.todos.length; i++) {
     const toDoContainer = document.createElement("div");
+    toDoContainer.dataset.todo = i;
     toDoList.appendChild(toDoContainer);
     
     toDoContainer.innerHTML = `<div><i class="far fa-circle"></i><span>${project.todos[i].title}</span></div>
-                               <div><button>Details</button><span>${project.todos[i].dueDate}</span><i class="fas fa-xmark"></i></div>`;
+                               <div><button>Details</button><span>${project.todos[i].dueDate}</span><button class="remove-todo" id="remove-todo-${i}"><i class="fas fa-xmark"></i></button></div>`;
 
+    const removeTodo = document.getElementById(`remove-todo-${i}`);
 
+    removeTodo.addEventListener("click", () => {
+      deleteToDo(removeTodo, project);
+    });
   };
 };
 
 const deleteProject = (el, arr) => {
   const parentID = el.parentElement.dataset.id;
-
   const content = document.querySelector(".content");
 
   if (content.hasChildNodes()) {
@@ -262,6 +266,33 @@ const deleteProject = (el, arr) => {
   }
 
   console.log(arr);
+};
+
+const deleteToDo = (el, project) => {
+  const grandParentID = el.parentElement.parentElement.dataset.todo;
+
+  project.todos.splice(grandParentID, 1);
+
+  const toDoList = document.querySelector(".to-do-list");
+
+  while (toDoList.hasChildNodes()) {
+    toDoList.removeChild(toDoList.firstChild);
+  };
+
+  for (let i = 0; i < project.todos.length; i++) {
+    const toDoContainer = document.createElement("div");
+    toDoContainer.dataset.todo = i;
+    toDoList.appendChild(toDoContainer);
+    
+    toDoContainer.innerHTML = `<div><i class="far fa-circle"></i><span>${project.todos[i].title}</span></div>
+                               <div><button>Details</button><span>${project.todos[i].dueDate}</span><button class="remove-todo" id="remove-todo-${i}"><i class="fas fa-xmark"></i></button></div>`;
+
+    const removeTodo = document.getElementById(`remove-todo-${i}`);
+
+    removeTodo.addEventListener("click", () => {
+      deleteToDo(removeTodo, project);
+    });
+  }
 };
 
 export { addProject, renderProject, renderToDoList, deleteProject };

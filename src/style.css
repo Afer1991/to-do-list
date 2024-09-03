@@ -76,7 +76,7 @@ h1 {
   font-family: 'Raleway';
 }
 
-.project-div button {
+.project-div button, .remove-todo {
   border: none;
   background: transparent;
   cursor: pointer;
@@ -183,6 +183,18 @@ h1 {
 .to-do-list button:hover {
   border: 2px solid transparent;
   background: #DDD;
+}
+
+button.remove-todo {
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  padding: 0;
+}
+
+button.remove-todo:hover {
+  border: none;
+  background: transparent;
 }
 
 .add-task {
