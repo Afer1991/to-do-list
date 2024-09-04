@@ -27,7 +27,7 @@ const defaultProject = {
       title: "Buy Materials",
       description: "Budget: $10,000",
       dueDate: "2024-08-31",
-      priority: "2",
+      priority: "Middle",
       complete: false,
     }
   ],

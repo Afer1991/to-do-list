@@ -132,17 +132,17 @@ const renderProject = (project) => {
   toDoModalDD.appendChild(option1);
 
   const option2 = document.createElement("option");
-  option2.setAttribute("value", "1");
+  option2.setAttribute("value", "High");
   option2.textContent = "High";
   toDoModalDD.appendChild(option2);
   
   const option3 = document.createElement("option");
-  option3.setAttribute("value", "2");
+  option3.setAttribute("value", "Middle");
   option3.textContent = "Middle";
   toDoModalDD.appendChild(option3);
 
   const option4 = document.createElement("option");
-  option4.setAttribute("value", "3");
+  option4.setAttribute("value", "Low");
   option4.textContent = "Low";
   toDoModalDD.appendChild(option4);
 
@@ -208,6 +208,7 @@ const renderToDoList = (project) => {
   const complete = '<i class="fas fa-circle-check"></i>';
   const completeCls = 'class="complete"';
   const uncompleteCls = "";
+  const noDueDate = "No Due Date";
 
   while (toDoList.hasChildNodes()) {
     toDoList.removeChild(toDoList.firstChild);
@@ -218,11 +219,30 @@ const renderToDoList = (project) => {
     toDoContainer.dataset.todo = i;
     toDoList.appendChild(toDoContainer);
     
-    toDoContainer.innerHTML = `<div><button class="mark-complete" id="mark-complete-${i}">${project.todos[i].complete ? complete : uncomplete}</button><span ${project.todos[i].complete ? completeCls : uncompleteCls}>${project.todos[i].title}</span></div>
-                               <div><button class="details">Details</button><span>${project.todos[i].dueDate}</span><button class="remove-todo" id="remove-todo-${i}"><i class="fas fa-xmark"></i></button></div>`;
+    toDoContainer.innerHTML = `<dialog id="modal-${i}">
+                                 <p>${project.todos[i].title}</p>
+                                 <p>Description: <span>${project.todos[i].description}</span></p>
+                                 <p>Due date: <span>${project.todos[i].dueDate ? project.todos[i].dueDate : noDueDate}</span></p>
+                                 <p>Priority: <span>${project.todos[i].priority}</span></p>
+                                 <button id="close-${i}">Close</button>
+                               </dialog>
+                               <div><button id="mark-complete-${i}" class="mark-complete">${project.todos[i].complete ? complete : uncomplete}</button><span ${project.todos[i].complete ? completeCls : uncompleteCls}>${project.todos[i].title}</span></div>
+                               <div><button id="details-${i}" class="details">Details</button><button class="remove-todo" id="remove-todo-${i}"><i class="fas fa-xmark"></i></button></div>`;
 
+    
+    const modal = document.getElementById(`modal-${i}`);
+    const detailBtn = document.getElementById(`details-${i}`);
+    const closeBtn = document.getElementById(`close-${i}`);
     const markComplete = document.getElementById(`mark-complete-${i}`);                           
     const removeTodo = document.getElementById(`remove-todo-${i}`);
+    
+    detailBtn.addEventListener("click", () => {
+      modal.showModal();
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.close();
+    });
 
     markComplete.addEventListener("click", () => {
       if (project.todos[i].complete) {
