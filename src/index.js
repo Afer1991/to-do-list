@@ -33,33 +33,7 @@ const defaultProject = {
   ],
 };
 
-const project2 = {
-  name: "Project 2",
-  todos: [
-    {
-      title: "Buy Materials",
-      description: "Budget: $10,000",
-      dueDate: "2024-08-31",
-      priority: "Middle",
-      complete: false,
-    }
-  ],
-};
-
-const project3 = {
-  name: "Project 3",
-  todos: [
-    {
-      title: "Buy Materials",
-      description: "Budget: $10,000",
-      dueDate: "2024-08-31",
-      priority: "Middle",
-      complete: false,
-    }
-  ],
-};
-
-const projectList = JSON.parse(localStorage.getItem("data")) || [defaultProject, project2, project3];
+const projectList = JSON.parse(localStorage.getItem("data")) || [defaultProject];
 
 const addPrjctBtn = document.getElementById("add-project");
 const prjctModal = document.getElementById("project-modal");
@@ -81,5 +55,5 @@ prjctForm.addEventListener("reset", () => {
 });
 
 renderProjectList(projectList);
-renderProject(projectList[0]);
-renderToDoList(projectList[0]);
+renderProject(projectList[0], projectList);
+renderToDoList(projectList[0], projectList);

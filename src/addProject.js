@@ -43,14 +43,14 @@ const addProject = (arr) => {
     });
 
     projectDiv.addEventListener("click", () => {
-      renderProject(newProject);
-      renderToDoList(newProject);
+      renderProject(newProject, arr);
+      renderToDoList(newProject, arr);
     });
 
     arr.push(newProject);
     projectDiv.dataset.id = arr.length - 1;
+    localStorage.setItem("data", JSON.stringify(arr));
   };
-  console.log(arr);
 };
 
 const renderProjectList = (arr) => {
@@ -73,13 +73,13 @@ const renderProjectList = (arr) => {
     });
 
     projectDiv.addEventListener("click", () => {
-      renderProject(arr[i]);
-      renderToDoList(arr[i]);
+      renderProject(arr[i], arr);
+      renderToDoList(arr[i], arr);
     });
   };
 };
 
-const renderProject = (project) => {
+const renderProject = (project, arr) => {
   const content = document.querySelector(".content");
 
   while (content.hasChildNodes()) {
@@ -202,8 +202,8 @@ const renderProject = (project) => {
 
   toDoForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    addToDo(project);
-    renderToDoList(project);
+    addToDo(project, arr);
+    renderToDoList(project, arr);
     toDoForm.reset();
     toDoModal.close();
   });
@@ -213,7 +213,7 @@ const renderProject = (project) => {
   });
 };
 
-const addToDo = (project) => {
+const addToDo = (project, arr) => {
   const toDoTitle = document.getElementById("to-do-title");
   const toDoDescription = document.getElementById("to-do-description");
   const toDoDueDate = document.getElementById("to-do-due-date");
@@ -227,10 +227,11 @@ const addToDo = (project) => {
     alert("To-Dos must be different");
   } else {
     project.todos.push(newToDo);
+    localStorage.setItem("data", JSON.stringify(arr));
   };
 };
 
-const renderToDoList = (project) => {
+const renderToDoList = (project, arr) => {
   const toDoList = document.querySelector(".to-do-list");
 
   const uncomplete = '<i class="far fa-circle"></i>';
@@ -284,11 +285,14 @@ const renderToDoList = (project) => {
       } else {
         project.todos[i].complete = true;
       }
-      renderToDoList(project);
+
+      localStorage.setItem("data", JSON.stringify(arr));
+
+      renderToDoList(project, arr);
     });
 
     removeTodo.addEventListener("click", () => {
-      deleteToDo(removeTodo, project);
+      deleteToDo(removeTodo, project, arr);
     });
   };
 };
@@ -333,22 +337,24 @@ const deleteProject = (el, arr) => {
     });
 
     projectDiv.addEventListener("click", () => {
-      renderProject(arr[i]);
-      renderToDoList(arr[i]);
+      renderProject(arr[i], arr);
+      renderToDoList(arr[i], arr);
     });
 
     projectDiv.dataset.id = i;
   }
 
-  console.log(arr);
+  localStorage.setItem("data", JSON.stringify(arr));
 };
 
-const deleteToDo = (el, project) => {
+const deleteToDo = (el, project, arr) => {
   const grandParentID = el.parentElement.parentElement.dataset.todo;
 
   project.todos.splice(grandParentID, 1);
 
-  renderToDoList(project);
+  localStorage.setItem("data", JSON.stringify(arr));
+
+  renderToDoList(project, arr);
 };
 
-export { addProject, renderProject, renderToDoList, deleteProject, renderProjectList };
+export { addProject, renderProjectList, renderProject, renderToDoList, deleteProject };
