@@ -53,6 +53,32 @@ const addProject = (arr) => {
   console.log(arr);
 };
 
+const renderProjectList = (arr) => {
+  const projectContainer = document.querySelector(".project-container");
+
+  for (let i = 0; i < arr.length; i++) {
+    const projectDiv = document.createElement("div");
+    projectDiv.classList.add("project-div");
+    projectDiv.dataset.id = i;
+    projectContainer.appendChild(projectDiv);
+
+    projectDiv.innerHTML = `<div><i class="fas fa-list"></i><span>${arr[i].name}</span></div>
+                            <button id="remove-project-${i}"><i class="fas fa-xmark"></i></button>`;
+    
+    const removeProject = document.getElementById(`remove-project-${i}`);
+
+    removeProject.addEventListener("click", (e) => {
+      e.stopPropagation();
+      deleteProject(removeProject, arr);
+    });
+
+    projectDiv.addEventListener("click", () => {
+      renderProject(arr[i]);
+      renderToDoList(arr[i]);
+    });
+  };
+};
+
 const renderProject = (project) => {
   const content = document.querySelector(".content");
 
@@ -325,4 +351,4 @@ const deleteToDo = (el, project) => {
   renderToDoList(project);
 };
 
-export { addProject, renderProject, renderToDoList, deleteProject };
+export { addProject, renderProject, renderToDoList, deleteProject, renderProjectList };
