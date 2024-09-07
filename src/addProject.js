@@ -30,7 +30,10 @@ const addProject = (arr) => {
     projectDiv.classList.add("project-div");
     projectContainer.appendChild(projectDiv);
 
-    projectDiv.innerHTML = `<div><i class="fas fa-list"></i><span>${newProject.name}</span></div><button id="remove-project-${arr.length}"><i class="fas fa-xmark"></i></button>`;
+    projectDiv.innerHTML = `<div>
+                              <i class="fas fa-list"></i><span>${newProject.name}</span>
+                            </div>
+                            <button id="remove-project-${arr.length}"><i class="fas fa-xmark"></i></button>`;
 
     const removeProject = document.getElementById(`remove-project-${arr.length}`);
 
@@ -197,7 +200,7 @@ const addToDo = (project) => {
   if (repeatToDo) {
     alert("To-Dos must be different");
   } else {
-    project.todos.push(newToDo); 
+    project.todos.push(newToDo);
   };
 };
 
@@ -220,14 +223,19 @@ const renderToDoList = (project) => {
     toDoList.appendChild(toDoContainer);
     
     toDoContainer.innerHTML = `<dialog id="modal-${i}">
-                                 <p>${project.todos[i].title}</p>
+                                 <h2>${project.todos[i].title}</h2>
                                  <p>Description: <span>${project.todos[i].description}</span></p>
                                  <p>Due date: <span>${project.todos[i].dueDate ? project.todos[i].dueDate : noDueDate}</span></p>
                                  <p>Priority: <span>${project.todos[i].priority}</span></p>
                                  <button id="close-${i}">Close</button>
                                </dialog>
-                               <div><button id="mark-complete-${i}" class="mark-complete">${project.todos[i].complete ? complete : uncomplete}</button><span ${project.todos[i].complete ? completeCls : uncompleteCls}>${project.todos[i].title}</span></div>
-                               <div><button id="details-${i}" class="details">Details</button><button class="remove-todo" id="remove-todo-${i}"><i class="fas fa-xmark"></i></button></div>`;
+                               <div>
+                                 <button id="mark-complete-${i}" class="mark-complete">${project.todos[i].complete ? complete : uncomplete}</button><span ${project.todos[i].complete ? completeCls : uncompleteCls}>${project.todos[i].title}</span>
+                               </div>
+                               <div>
+                                 <button id="details-${i}" class="details">Details</button>
+                                 <button class="remove-todo" id="remove-todo-${i}"><i class="fas fa-xmark"></i></button>
+                               </div>`;
 
     
     const modal = document.getElementById(`modal-${i}`);
@@ -284,7 +292,12 @@ const deleteProject = (el, arr) => {
     projectDiv.classList.add("project-div");
     projectContainer.appendChild(projectDiv);
 
-    projectDiv.innerHTML = `<div><i class="fas fa-list"></i><span>${arr[i].name}</span></div><button id="remove-project-${i}"><i class="fas fa-xmark"></i></button>`;
+    projectDiv.innerHTML = `<div>
+                              <i class="fas fa-list"></i><span>${arr[i].name}</span>
+                            </div>
+                            <button id="remove-project-${i}">
+                              <i class="fas fa-xmark"></i>
+                            </button>`;
 
     const removeProject = document.getElementById(`remove-project-${i}`);
 

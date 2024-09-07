@@ -82,7 +82,7 @@ h1 {
   cursor: pointer;
 }
 
-#project-modal, #to-do-modal {
+#project-modal, #to-do-modal, .to-do-list dialog {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -157,6 +157,10 @@ h1 {
 
 .to-do-list {
   width: 40%;
+}
+
+.to-do-list dialog {
+  width: 15rem;
 }
 
 .to-do-list > div {
