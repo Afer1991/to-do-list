@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Raleway';
-  src: url('./Raleway-Black.ttf');
+  src: url('Raleway-VariableFont_wght.ttf');
 }
 
 *, *::before, *::after {
@@ -10,6 +10,7 @@
 
 body {
   height: 100vh;
+  font-family: 'Raleway';
 }
 
 .container {
@@ -37,7 +38,7 @@ h1, svg {
 }
 
 h1 {
-  font-family: 'Raleway';
+  font-weight: 900;
 }
 
 .sidebar {
@@ -47,6 +48,7 @@ h1 {
 
 .sidebar svg {
   color: #000;
+  height: 1.1rem;
 }
 
 .sidebar h1 {
@@ -63,6 +65,8 @@ h1 {
   justify-content: space-between;
   padding: 8px;
   border-radius: 5px;
+  font-weight: 900;
+  font-size: 1.2rem;
 }
 
 .project-div:hover {
@@ -72,8 +76,8 @@ h1 {
 
 .project-div div {
   display: flex;
+  align-items: center;
   gap: 8px;
-  font-family: 'Raleway';
 }
 
 .project-div button, .remove-todo {
@@ -92,7 +96,7 @@ h1 {
   border: 2px solid #000;
 }
 
-#project-modal input {
+#project-modal input, #to-do-form input, #to-do-form textarea, #to-do-form select {
   padding: 4px;
   font-size: 1rem;
 }
@@ -103,11 +107,11 @@ h1 {
   justify-content: space-between;
 }
 
-.btn-container button, .content .btn-container button {
+.btn-container button, .content .btn-container button, .cls-btn {
   padding: 6px 16px;
   border-radius: 8px;
   font-size: 1rem;
-  font-weight: bolder;
+  font-weight: 900;
   cursor: pointer;
   border: 1px solid #ddd;
 }
@@ -116,18 +120,19 @@ h1 {
   background: #a7f3d0;
 }
 
-#cncl-new-project, #cnl-to-do {
+#cncl-new-project, #cnl-to-do, .cls-btn {
   background: #fda4af;
 }
 
 #add-project {
   margin: 12px 24px;
   padding: 4px 8px;
-  font-family: 'Raleway';
   border: none;
   border-radius: 5px;
   background: #DDD;
   font-size: 1rem; 
+  font-family: 'Raleway';
+  font-weight: 900;
 }
 
 #add-project:hover {
@@ -146,11 +151,6 @@ h1 {
   padding: 24px 0;
 }
 
-#to-do-form p {
-  display: flex;
-  flex-direction: column;
-}
-
 .content svg {
   color: #000;
 }
@@ -162,6 +162,50 @@ h1 {
 .to-do-list dialog {
   width: 15rem;
 }
+
+.to-do-list dialog > h2 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.to-do-list dialog > p {
+  margin-bottom: 6px;
+  font-weight: 800;
+}
+
+.to-do-list dialog > p > span {
+  font-weight: 400;
+}
+
+.high {
+  background: #FF4B3E;
+  padding: 4px;
+  border-radius: 4px;
+  color: #FFF;
+  font-weight: 800 !important;
+}
+
+.middle {
+  background: #FFB20F;
+  padding: 4px;
+  border-radius: 4px;
+  color: #FFF;
+  font-weight: 800 !important;
+}
+
+.low {
+  background: #04A777;
+  padding: 4px;
+  border-radius: 4px;
+  color: #FFF;
+  font-weight: 800 !important;
+}
+
+.to-do-list dialog > div {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+} 
 
 .to-do-list > div {
   display: flex;
@@ -194,27 +238,36 @@ h1 {
 
 .details {
   padding: 4px 8px;
-  font-family: 'Raleway';
   border: 2px solid #000;
   border-radius: 5px;
   background: #FFF;
   font-size: 1.1rem;
   cursor: pointer;
+  font-family: 'Raleway';
+  font-weight: 900;
 }
 
 .details:hover {
-  border: 2px solid transparent;
-  background: #DDD;
+  color: #FFF;
+  background: #000;
+}
+
+#to-do-form p {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4px;
+  gap: 2px;
 }
 
 .add-task {
   padding: 4px 8px;
-  font-family: 'Raleway';
   border: none;
   border-radius: 5px;
   background: #FFF;
   font-size: 1.25rem;
   cursor: pointer;
+  font-family: 'Raleway';
+  font-weight: 900;
 }
 
 .add-task:hover {

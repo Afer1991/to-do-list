@@ -128,6 +128,8 @@ const renderProject = (project, arr) => {
   const toDoModalTxt = document.createElement("textarea");
   toDoModalTxt.setAttribute("id", "to-do-description");
   toDoModalTxt.setAttribute("placeholder", "Task details...");
+  toDoModalTxt.setAttribute("rows", "3");
+  toDoModalTxt.setAttribute("cols", "20");
   toDoModalPara2.appendChild(toDoModalTxt);
 
   const toDoModalPara3 = document.createElement("p");
@@ -253,8 +255,8 @@ const renderToDoList = (project, arr) => {
                                  <h2>${project.todos[i].title}</h2>
                                  <p>Description: <span>${project.todos[i].description}</span></p>
                                  <p>Due date: <span>${project.todos[i].dueDate ? project.todos[i].dueDate : noDueDate}</span></p>
-                                 <p>Priority: <span>${project.todos[i].priority}</span></p>
-                                 <button id="close-${i}">Close</button>
+                                 <p>Priority: <span class="${project.todos[i].priority.toLowerCase()}">${project.todos[i].priority}</span></p>
+                                 <div><button id="close-${i}" class="cls-btn">Close</button></div>
                                </dialog>
                                <div>
                                  <button id="mark-complete-${i}" class="mark-complete">${project.todos[i].complete ? complete : uncomplete}</button><span ${project.todos[i].complete ? completeCls : uncompleteCls}>${project.todos[i].title}</span>
